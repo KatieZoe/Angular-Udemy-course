@@ -1,0 +1,34 @@
+<label>Server Name</label>
+<!-- Passing and using data with even binding -->
+<!-- <input 
+type="text"
+class="form-control"
+(input)="onUpdateServerName($event)"
+> -->
+<!-- Two-way-databinding - reads and sets and updates the value both ways (variable in .ts file and .html)-->
+<input 
+type="text"
+class="form-control"
+[(ngModel)]="serverName"
+>
+<!-- <p>{{ serverName }}</p> -->
+
+<button class="btn btn-primary" [disabled]="!allowNewServer" (click)="onCreateServer()">Add Server</button>
+
+<!-- String Interpolation = <p>{{ allowNewServer }}</p>  -->
+<!-- Property Binding = <p [innerText]="allowNewServer"></p> -->
+<!-- If you want to output something in your template - String Interpolation. if you want to change a property use property binding. -->
+<!-- NB: don't mix the two... string = {} property binding = []="needs to be typescript" -->
+
+<!-- <p>{{ serverCreationStatus }}</p> -->
+<p *ngIf="serverCreated">Server was created, server name is {{ serverName }}</p>
+<!-- You won't see the else option used as much but see below: -->
+<!-- <p *ngIf="serverCreated; else noServer">Server was created, server name is {{ serverName }}</p>
+<ng-template #noServer>
+  <p>No server was created!</p>
+</ng-template> -->
+
+<!-- Event Binding (click)="onCreateServer()" as a html attribute -->
+<!-- Googling for YOUR_ELEMENT properties  or YOUR_ELEMENT events  should yield nice results of html elements you can use for event binding -->
+<app-server></app-server>
+<app-server></app-server>
